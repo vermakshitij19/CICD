@@ -10,7 +10,7 @@ terraform {
 provider "google" {
   project     = "project-fe7d28ee-6aa8-4b6f-88b"
   region      = "us-central1"
-  zone        = "us-central1-a"
+  zone        = "us-central1-f"
   
   impersonate_service_account = "terraform-sa@project-fe7d28ee-6aa8-4b6f-88b.iam.gserviceaccount.com"
 }
@@ -18,7 +18,7 @@ provider "google" {
 resource "google_compute_instance" "dev" {
   name         = "jenkins-tf-vm"
   machine_type = "e2-micro"
-  zone         = "us-central1-a"
+  zone         = "us-central1-f"
 
   boot_disk {
     initialize_params {
