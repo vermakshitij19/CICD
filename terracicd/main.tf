@@ -1,11 +1,19 @@
-provider "aws" {
-  region = "us-east-1"
+terraform {
+  required_providers {
+    google = {
+      source  = "hashicorp/google"
+      version = "~> 5.0"
+    }
+  }
 }
 
-resource "aws_instance" "dev" {
-    ami = "ami-0f88e80871fd81e91"
-    instance_type = "t2.micro"
-    tags = {
-      Name = "vvvnaresh"
-    }
+provider "google" {
+  project = "project-fe7d28ee-6aa8-4b6f-88b"
+  region  = "us-central1"
+  zone    = "us-central1-a"
+  #credentials = file("service-account.json")   # Path to your SA key
 }
+
+resource "google_compute_instance" "dev" {
+  name         = "VMfromenkins"
+  machine_type = "e2-micr_
