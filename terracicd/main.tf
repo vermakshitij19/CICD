@@ -11,9 +11,27 @@ provider "google" {
   project = "project-fe7d28ee-6aa8-4b6f-88b"
   region  = "us-central1"
   zone    = "us-central1-a"
-  #credentials = file("service-account.json")   # Path to your SA key
+  # Using gcloud ADC (no service account JSON required)
 }
 
 resource "google_compute_instance" "dev" {
-  name         = "VMfromenkins"
-  machine_type = "e2-micr_
+  name         = "vm-from-jenkins"
+  machine_type = "e2-micro"
+  zone         = "us-central1-a"
+
+  boot_disk {
+    initialize_params {
+      image = "projects/debian-cloud/global/images/family/debian-12"
+    }
+  }
+
+  network_interface {
+    network = "default"
+
+    access_config {}
+  }
+
+  labels = {
+    env = "dev"
+  }
+}
