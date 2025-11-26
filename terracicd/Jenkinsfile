@@ -2,9 +2,9 @@ roypipeline {
     agent any
 
     stages {
-        // stage('clone') {
-          //  steps {
-               // git 'https://github.com/vermakshitij19/CICD.git'
+        stage('clone') {
+           steps {
+               git 'https://github.com/vermakshitij19/CICD.git'
             }
         }
 
