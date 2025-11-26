@@ -1,4 +1,4 @@
-pipeline {
+roypipeline {
     agent any
 
     stages {
@@ -27,7 +27,7 @@ pipeline {
         stage('apply') {
             steps {
                 dir('terracicd') {
-                    sh 'terraform apply -auto-approve'
+                    sh 'terraform destroy -auto-approve'
                 }
             }
         }
