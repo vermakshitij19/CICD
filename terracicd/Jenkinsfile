@@ -4,18 +4,31 @@ pipeline {
     stages {
         stage('clone') {
             steps {
-              #git branch: 'main', url: 'https://github.com/CloudTechDevOps/Terraform_CICD.git'
-               git 'https://github.com/vermakshitij19/CICD.git'
+                git 'https://github.com/vermakshitij19/CICD.git'
             }
         }
+
         stage('init') {
             steps {
-                sh 'terraform init'
+                dir('terracicd') {
+                    sh 'terraform init'
+                }
             }
         }
-         stage('plan') {
+
+        stage('plan') {
             steps {
-                sh 'terraform plan'
+                dir('terracicd') {
+                    sh 'terraform plan'
+                }
+            }
+        }
+
+        stage('apply') {
+            steps {
+                dir('terracicd') {
+                    sh 'terraform ${action} -auto-approve'
+                }
             }
         }
     }
