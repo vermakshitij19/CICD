@@ -27,7 +27,7 @@ pipeline {
         stage('apply') {
             steps {
                 dir('terracicd') {
-                    sh 'terraform ${action} -auto-approve'
+                    sh 'terraform apply -auto-approve'
                 }
             }
         }
