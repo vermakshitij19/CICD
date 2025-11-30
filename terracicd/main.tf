@@ -16,7 +16,7 @@ provider "google" {
 }
 
 resource "google_compute_instance" "dev" {
-  name         = "jenkins-tf-vm"
+  name         = "jenkins-tf-vm2"
   machine_type = "e2-micro"
   zone         = "us-central1-f"
 
